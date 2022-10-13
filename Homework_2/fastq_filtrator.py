@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[15]:
+
 
 import os # for using os.path.isfile() and os.remove() functions
-
 
 def main(input_fastq, output_file_prefix, save_filtered = False, 
          gc_bounds = (0,100), length_bounds = (0, 2**32), quality_threshold = 0):
@@ -44,40 +45,22 @@ def main(input_fastq, output_file_prefix, save_filtered = False,
             length_test = length_filter(sequence, length_bounds) # variable for length_filter() return
             output_generator(seq_read, q_test, gc_test, length_test, # calling function for output .fastq generation
                              output_file_prefix, save_filtered)
-print("Your fastq file was filtered!")
 
-
-def output_generator(seq_read, q_test, gc_test, length_test, 
-                     output_file_prefix, save_filtered):
-    '''Function output_generator() generates one or two files with reads from input .fastq file after their 
-    filtering. It creates you '_passed.fastq' with passed reads. If you choosed "True" for save_filtered 
-    variable, it will also generates '_failed.fastq' file with failed reads.
-        
-    Parameters:
-    seq_read (list): all information about one read
-    q_test (bool): qscore_filter function return (True for passed read)
-    gc_test (bool): gc_content_filter function return (True for passed read)
-    length_test (bool): length_filter function return (True for passed read)
-    output_file_prefix (str): first part of the output file(s) name(s)
-    save_filtered (bool): variable for decision about failed reads (True for saving them into '_failed.fastq' 
-        file or not)
+def get_read(row_data):
+    '''This function gets one read (four strings) from input .fastq file and transforms it into list.
     
-    Returns: None
+    Parameters:
+    row_data (opened input .fastq file): variable generated during input_fastq file opening
+    
+    Returns:
+    seq_read (list): all information about one read
     '''
     
-    # appending reads into output .fastq
-    if False in (q_test, gc_test, length_test):
-        # appending reads into _failed.fastq file, variable save_filtered = True
-        if save_filtered:
-            with open(output_file_prefix+'_failed.fastq', 'a') as failed_reads:
-                for i in seq_read:
-                    failed_reads.write(i+'\n')
-    else:
-        with open(output_file_prefix+'_passed.fastq', 'a') as passed_reads:
-                for i in seq_read:
-                    passed_reads.write(i+'\n')
+    # getting list of read information (4 strings)
+    seq_read = [row_data.readline().strip() for _ in range(4)]
+    return seq_read
 
-                    
+
 def qscore_filter(ascii_code, quality_threshold):
     '''This function calculates Q-score for every read in input .fastq file. 
     It decodes each nucleotide quality given in ASCII format into numeric Phred33 format and determines mean 
@@ -93,16 +76,13 @@ def qscore_filter(ascii_code, quality_threshold):
     
     all_q_scores = 0
     # cycle for nucleotide quality decoding in Phred33
-    for i in ascii_code:
-        q_score = ord(i) - 33
+    for character in ascii_code:
+        q_score = ord(character) - 33
         all_q_scores += q_score
     read_quality = all_q_scores / len(ascii_code) # mean read quality calculation
     
     # mean read quality test using variable quality_threshold
-    if read_quality >= quality_threshold:
-        return True
-    else:
-        return False
+    return read_quality >= quality_threshold
 
     
 def gc_content_filter(sequence, gc_bounds):
@@ -130,10 +110,7 @@ def gc_content_filter(sequence, gc_bounds):
     gc_content = (g_number + c_number) / len(sequence) * 100 # GC-content calculation
     
     # read GC-content test using thresholds based on gc_bounds variable
-    if min_gc <= gc_content <= max_gc: 
-        return True
-    else:
-        return False
+    return min_gc <= gc_content <= max_gc 
 
     
 def length_filter(sequence, length_bounds):
@@ -159,22 +136,36 @@ def length_filter(sequence, length_bounds):
         min_length, max_length = length_bounds
     
     # read length test using thresholds based on length_bounds variable
-    if min_length <= len(sequence) <= max_length: 
-        return True
-    else:
-        return False
+    return min_length <= len(sequence) <= max_length
 
     
-def get_read(row_data):
-    '''This function gets one read (four strings) from input .fastq file and transforms it into list.
-    
+def output_generator(seq_read, q_test, gc_test, length_test, 
+                     output_file_prefix, save_filtered):
+    '''Function output_generator() generates one or two files with reads from input .fastq file after their 
+    filtering. It creates you '_passed.fastq' with passed reads. If you choosed "True" for save_filtered 
+    variable, it will also generates '_failed.fastq' file with failed reads.
+        
     Parameters:
-    row_data (opened input .fastq file): variable generated during input_fastq file opening
-    
-    Returns:
     seq_read (list): all information about one read
+    q_test (bool): qscore_filter function return (True for passed read)
+    gc_test (bool): gc_content_filter function return (True for passed read)
+    length_test (bool): length_filter function return (True for passed read)
+    output_file_prefix (str): first part of the output file(s) name(s)
+    save_filtered (bool): variable for decision about failed reads (True for saving them into '_failed.fastq' 
+        file or not)
+    
+    Returns: None
     '''
     
-    # getting list of read information (4 strings)
-    seq_read = [row_data.readline().strip() for i in range(4)]
-    return seq_read
+    # appending reads into output .fastq
+    if False in (q_test, gc_test, length_test):
+        # appending reads into _failed.fastq file, variable save_filtered = True
+        if save_filtered:
+            with open(output_file_prefix+'_failed.fastq', 'a') as failed_reads:
+                for read_str in seq_read:
+                    failed_reads.write(read_str+'\n')
+    else:
+        with open(output_file_prefix+'_passed.fastq', 'a') as passed_reads:
+                for read_str in seq_read:
+                    passed_reads.write(read_str+'\n')
+
