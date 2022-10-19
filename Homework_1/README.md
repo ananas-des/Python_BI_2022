@@ -10,7 +10,7 @@ The **hw1_collections.py** recieves two variables from std.input() - *command* a
 - **command**: string variable, paste your command in std.input(), programm proceeds to specified *functions* (see below) resulted in *std.out()*
 - **nucleic_acid**: string variable, this sequence undergoes some checking-outs, if it is recognised as DNA or RNA type, the show begins
 
-### **How does it works**
+### **How does it work**
 The **hw1_collections.py** supports the list of *commands*:
 - **transcribe** — to initiate function for DNA transcription, in std.out() RNA sequence from DNA template
 - **reverse* — to initiate function that reverses either DNA or RNA, in std.out() reversed DNA or RNA sequence
