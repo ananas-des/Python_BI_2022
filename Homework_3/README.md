@@ -2,15 +2,14 @@
 ## Homework3
 
 Programmer Mikhail published comprehensive study focused on **python modules** and **virtual environments**. In *Supplementary* he attached a link 
-to the repository on *Github* with his code (https://github.com/krglkvrmn/Virtual_environment_research). Unfortunately, the utility **ultraviolence.py** was not adapted 
+to the repository on *Github* with [his code](https://github.com/krglkvrmn/Virtual_environment_research). Unfortunately, the utility **ultraviolence.py** was not adapted 
 for widespread usage. Here some guidelines with **requirements.txt** for proper launch of Mikhail's script on **Ubuntu 22.04.1 LTS** with **Python v3.11.0a7**. 
 
 ### System
 Launch of utility **ultraviolence.py** was tested on **Ubuntu 22.04.1 LTS** (codename: jammy) with **Python version 3.11.0a7**.
 
 ### Files
-In this directory there are *four files*: [README.md](./Homework_3/README.md), [pandas_fix.sh](./Homework_3/pandas_fix.sh), 
-[requirements.txt](./Homework_3/requirements.txt), and [ultraviolence.py](./Homework_3/ultraviolence.py).
+In this directory there are *four files*: [README.md](./README.md), [pandas_fix.sh](./pandas_fix.sh), [requirements.txt](./requirements.txt), and [ultraviolence.py](./ultraviolence.py).
 - **README.md**: guidlines for *ultraviolence.py* proper launch
 - **pandas_fix.sh**: bash script for modifying **pandas module** *frame.py* script
 - **requirements.txt**: .txt file with the dependencies for *ultraviolence.py*
@@ -27,7 +26,7 @@ based on [recommendations](https://www.linuxcapable.com/how-to-install-python-3-
 - extract the Python archive using `tar` command
 
 `tar -xf Python-3.11.0a7.tar.xz`
-- optionally, move Python-3.11.0a7 to a proper destination, such as the /opt/ directory
+- optionally, move Python-3.11.0a7 to a proper destination, such as the `/opt/` directory
 
 `sudo mv Python-3.11.0a7 /opt/`
 - install the dependencies required to install Python 3.11.0a7
@@ -68,7 +67,8 @@ After **Python 3.11** installation, create **virtual environment**, which indepe
 **III. Utility launch**\
 Now you need to install specified packages listed in **requirements.txt**. 
 In **ultraviolence.py**, lane 37 type `set` was used to index pandas `DataFrame`, which caused syntax error. 
-So, to tackle this you need to modify *frame.py* for *pandas package*. Bash script **pandas_fix.sh** is used to comment lines where index type is checked.  
+So, to tackle this you need to modify *frame.py* for *pandas package* located in `./ultraviolent/lib/python3.11/site-packages/pandas/core/frame.py`. 
+Bash script **pandas_fix.sh** is used to comment lines where index type is checked.  
 - install the specified packages using the configuration file **requirements.txt**
 
 `python -m pip install -r requirements.txt`
