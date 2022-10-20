@@ -20,6 +20,12 @@ In this directory there are *four files*: [README.md](./README.md), [pandas_fix.
 For *ultraviolence.py* launch you need **Python version 3.11**. 
 Here guidelines for **Python version 3.11.0a7** installation on **Ubuntu 22.04.1 LTS** 
 based on [recommendations](https://www.linuxcapable.com/how-to-install-python-3-11-on-ubuntu-22-04-lts/#Install_Python_311_-_PPA_Method).
+- create your Python project working directory
+
+`mkdir /home/ultraviolent_project/` *(as an example)*
+- navigate to your working directory
+
+`cd /home/ultraviolent_project/`
 - use the `wget` command to download the [Python 3.11 archive](https://www.python.org/ftp/python/3.11.0/Python-3.11.0a7.tar.xz)
 
 `wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0a7.tar.xz`
@@ -54,6 +60,9 @@ based on [recommendations](https://www.linuxcapable.com/how-to-install-python-3-
 
 **II. Virtual environment creation**\
 After **Python 3.11** installation, create **virtual environment**, which independent of the system installed Python and its modules.
+- navigate to your working directory
+
+`cd /home/ultraviolent_project/`
 - create *Python 3.11* **ultraviolent** virtual environment using `venv` command
 
 `python3.11 -m venv ultraviolent`
