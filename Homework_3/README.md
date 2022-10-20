@@ -78,14 +78,13 @@ Now you need to install specified packages listed in **requirements.txt**.
 In **ultraviolence.py**, lane 37 type `set` was used to index pandas `DataFrame`, which caused syntax error. 
 So, to tackle this you need to modify *frame.py* for *pandas package* located in `./ultraviolent/lib/python3.11/site-packages/pandas/core/frame.py`. 
 Bash script **pandas_fix.sh** is used to comment lines where index type is checked.  
-- install the specified packages using the configuration file **requirements.txt**
+- install the specified packages using the configuration file [requirements.txt](./requirements.txt)
 
 `python -m pip install -r requirements.txt`
-- run bash script **pandas_fix.sh** to modify *frame.py* for *pandas package*
+- run bash script [pandas_fix.sh](./pandas_fix.sh) to modify *frame.py* for *pandas package*
 
 `bash pandas_fix.sh`
-- launch **ultraviolence.py**
-
+- launch [ultraviolence.py]
 `python ultraviolence.py`
 
 Enjoy Mikhail's script!
