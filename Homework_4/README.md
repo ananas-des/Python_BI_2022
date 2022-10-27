@@ -1,4 +1,4 @@
-# **NumPy Challenge**
+# **NumPy Challenge** 🔠 @ 🔡
 ## Homework4
 
 Utility **numpy_challenge.py** provides some functions for dealing with *one and two dimensional matrices* given in `numpy.array` format, 
