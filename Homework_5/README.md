@@ -33,7 +33,7 @@ Using **rrna_annotation.gff.gz** and **alignment.bed** files, functions for read
 
 [Volcano plot](volcano_plot) is often used to visualize the differential gene expression data. On the X-axis there is *Logarithmic Fold Change*, and *the significance level* (p-value adjusted for multiple comparison) of these changes on the Y-axis. This plot is based on **diffexpr_data.tsv.gz**.
 
-![volcano_plot](./plots/volcano.png)
+![volcano_plot](./plots/volcano_plot.png)
 
 ### Task3. Pie Chart
 
