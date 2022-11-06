@@ -18,4 +18,4 @@ Here some solutions for Python `pandas` and plot customization Tasks using `matp
 
 - create and customize **bar of pie chart** where the first slice of the pie is "exploded" into a bar chart with a further breakdown of said slice's characteristics on **Top_100_Languages.csv** (arbitrary data)
 
-All data files are in `pandas_data/` folder.
+All data files are in `./data/` folder.
