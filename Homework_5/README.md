@@ -12,10 +12,10 @@ In this directory there are *four files*: [README.md](./README.md), [requirement
 - **hw5_pandas_and_plots.py**: .py with only code from jupyter notebook
 
 ### Folders
-In this directory there are *two folders*: `data/` and `plots/`.
+In this directory there are *two folders*: `./data/` and `./plots/`.
 
-- `data/`: all the files used during this work
-- `plots/`: all .png plots created during this work
+- `./data/`: all the files used during this work
+- `./plots/`: all .png plots created during this work
 
 ### Tasks
 
@@ -27,7 +27,7 @@ Using **rrna_annotation.gff.gz** and **alignment.bed** files, functions for read
 - `read_bed6()`: reads .bed file and transforms it into pandas.DataFrame; 
 
 **rRNA_barplot** visualizes rRNA type counts for each reference genome based on **rrna_annotation.gff** data:
-![rRNA_barplot](rRNA_barplot.png)
+![rRNA_barplot](./plots/pie_chart.png)
 
 ### Task2. Volcano Plot customization
 
