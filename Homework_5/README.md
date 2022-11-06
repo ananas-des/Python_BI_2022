@@ -1,4 +1,4 @@
-# Pandas and Vizualizations
+# Pandas and Vizualizations :chart_with_upwards_trend:
 ## Homework5
 
 Here some solutions for Python `pandas` and plot customization Tasks using `matplotlib` and `seaborn`.
@@ -21,7 +21,7 @@ In this directory there are *two folders*: `./data/` and `./plots/`.
 
 ### Task1. Real Data
 
-Using **rrna_annotation.gff.gz** and **alignment.bed** files, functions for reading **.gff** and **.bed** files and converting them into `pandas.DataFrame` were created, and reconstruction of `bedtools intersect` were performed:
+Using [rrna_annotation.gff.gz](./data/rrna_annotation.gff.gz) and [alignment.bed](./data/alignment.bed) files, functions for reading **.gff** and **.bed** files and converting them into `pandas.DataFrame` were created, and reconstruction of `bedtools intersect` were performed:
 
 - `read_gff()`: reads either gziped or not .gff file and transforms it into pandas.DataFrame;
 - `read_bed6()`: reads .bed file and transforms it into pandas.DataFrame; 
@@ -31,12 +31,12 @@ Using **rrna_annotation.gff.gz** and **alignment.bed** files, functions for read
 
 ### Task2. Volcano Plot customization
 
-[Volcano plot](volcano_plot) is often used to visualize the differential gene expression data. On the X-axis there is *Logarithmic Fold Change*, and *the significance level* (p-value adjusted for multiple comparison) of these changes on the Y-axis. This plot is based on **diffexpr_data.tsv.gz**.
+**Volcano plot** is often used to visualize the differential gene expression data. On the X-axis there is *Logarithmic Fold Change*, and *the significance level* (p-value adjusted for multiple comparison) of these changes on the Y-axis. This plot is based on [diffexpr_data.tsv.gz](./data/diffexpr_data.tsv.gz).
 
 ![volcano_plot](./plots/volcano_plot.png)
 
 ### Task3. Pie Chart
 
-[Bar of pie chart](https://matplotlib.org/stable/gallery/pie_and_polar_charts/bar_of_pie.html) is the plot where the first slice of the pie is "exploded" into a bar chart with a further breakdown of said slice's characteristics. Here the visualization of *Top 100 Laguages by Native Speakers* based on **Top_100_Languages.csv** data from [kaggle.com](https://www.kaggle.com/code/narmelan/exploring-the-100-most-spoken-languages-dataset/data).
+[Bar of pie chart](https://matplotlib.org/stable/gallery/pie_and_polar_charts/bar_of_pie.html) is the plot where the first slice of the pie is "exploded" into a bar chart with a further breakdown of said slice's characteristics. Here the visualization of *Top 100 Laguages by Native Speakers* based on [Top_100_Languages.csv](./data/Top_100_Languages.csv) data from [kaggle.com](https://www.kaggle.com/code/narmelan/exploring-the-100-most-spoken-languages-dataset/data).
 
 ![pie_chart](./plots/pie_chart.png)
