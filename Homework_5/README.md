@@ -27,16 +27,16 @@ Using **rrna_annotation.gff.gz** and **alignment.bed** files, functions for read
 - `read_bed6()`: reads .bed file and transforms it into pandas.DataFrame; 
 
 **rRNA_barplot** visualizes rRNA type counts for each reference genome based on **rrna_annotation.gff** data:
-![rRNA_barplot](./plots/pie_chart.png)
+![rRNA_barplot](./plots/rRNA_barplot.png)
 
 ### Task2. Volcano Plot customization
 
-**Volcano plot** is often used to visualize the differential gene expression data. On the X-axis there is *Logarithmic Fold Change*, and *the significance level* (p-value adjusted for multiple comparison) of these changes on the Y-axis. This plot is based on **diffexpr_data.tsv.gz**.
+[Volcano plot](volcano_plot) is often used to visualize the differential gene expression data. On the X-axis there is *Logarithmic Fold Change*, and *the significance level* (p-value adjusted for multiple comparison) of these changes on the Y-axis. This plot is based on **diffexpr_data.tsv.gz**.
 
-![volcano_plot](volcano_plot.png)
+![volcano_plot](./plots/volcano.png)
 
 ### Task3. Pie Chart
 
 [Bar of pie chart](https://matplotlib.org/stable/gallery/pie_and_polar_charts/bar_of_pie.html) is the plot where the first slice of the pie is "exploded" into a bar chart with a further breakdown of said slice's characteristics. Here the visualization of *Top 100 Laguages by Native Speakers* based on **Top_100_Languages.csv** data from [kaggle.com](https://www.kaggle.com/code/narmelan/exploring-the-100-most-spoken-languages-dataset/data).
 
-![pie_chart](pie_chart.png)
+![pie_chart](./plots/pie_chart.png)
