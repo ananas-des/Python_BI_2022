@@ -57,7 +57,7 @@ length_distr = dict((length, word_lengths.count(length)/len(words)) for length i
 plt.figure(dpi=100)
 plt.title('Unique words length distribution', fontweight='bold', size=14)
 plt.xlabel('word length')
-plt.ylabel('frequency')
+plt.ylabel('unique words length share')
 plt.xticks(range(1, 22, 2))
 plt.bar(length_distr.keys(), length_distr.values(), color='green')
 
