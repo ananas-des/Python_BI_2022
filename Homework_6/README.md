@@ -1,6 +1,6 @@
-# Regular expressions
+# Regular expressions :paperclip:
 
-# Homework5
+# Homework6
 
 Here some solutions for Python `pandas` and plot customization Tasks using `matplotlib` and `seaborn`.
 
@@ -29,7 +29,7 @@ In this story there are:
 - 983 words that contain 'a' vowel (both cases);
 - 6 exclamation sentences;
 - according to **the unique words length distribution bar plot**, the most of the unique words in this story has the length of four
-![rRNA_barplot](./data/length_distr.png)
+<img src="./data/length_distr.png" alt="drawing" width="500"/>
 
 ### Task6. From Russian to Brickish
 
