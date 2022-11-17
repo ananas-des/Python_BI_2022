@@ -33,8 +33,8 @@ In this story there are:
 
 ### Task6. From Russian to Brickish
 
-Function `brickish()` translates Russian to brick language:). Word, phase, or sentence(s) in Russian may be set as function parameter.
+Function `brickish()` translates Russian to brick language:). *Word, phase, or sentence(s) in Russian* may be set as function parameter.
 
 ### Task7. Sentences with a given number of words
 
-Function `n_words_sentences()` parses given text for sentences with n words. For this function set two parameters: text for parsing and number of words in sentences.
+Function `n_words_sentences()` parses given text for sentences with n words. For this function set two parameters: *text* for parsing and *number of words in sentences*.
