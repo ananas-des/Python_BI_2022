@@ -1,7 +1,19 @@
-# Repository for Python Homeworks in IB
-## Homework9
+# Object-oriented programming (OOP)
+
+# Homework9
 
 Here some solutions for Python **object oriented programming (OOP)** Tasks using `datetime`, `abc`, and `numpy` modules.
+
+### System
+This code was tested on **Ubuntu 22.04.1 LTS** with **Python version 3.10.6**.
+
+### Files
+In this directory there are *four files*: [README.md](./README.md), [requirements.txt](./requirements.txt), [hw9_oop.ipynb](./hw9_oop.ipynb), and [hw9_oop.py](./hw9_oop.py).
+
+- **README.md**: discriptions for files in this directory
+- **requirements.txt**: .txt file with the dependencies for *hw9_oop.ipynb* and *.py* 
+- **hw9_oop.ipynb**: jupyter notebook with Tasks solutions
+- **hw9_oop.py**: .py with only code from jupyter notebook
 
 ## Task1. Chat, Message and User
 
