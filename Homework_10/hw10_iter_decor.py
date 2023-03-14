@@ -1,3 +1,9 @@
+import os
+from dataclasses import dataclass
+from functools import lru_cache
+from datetime import datetime
+
+
 # Task1
 
 class MyDict(dict):
@@ -152,10 +158,6 @@ class ExampleClass:
     
 # Task5
 
-import os
-from dataclasses import dataclass
-
-
 class OpenFasta:
     '''A class for reading .fasta files with biological sequences
     
@@ -308,5 +310,177 @@ with OpenFasta(os.path.join("data", "example.fasta")) as fasta:
     for _ in range(10):
         print(fasta.read_record())
         
-
+        
 # Task6
+
+from functools import lru_cache
+from datetime import datetime
+
+
+# Ваш код здесь (1 и 2 подзадание)
+def calc_runtime(func):
+    '''Decorator for calculatinf function runtime'''
+    
+    
+    def inner_function(*args, **kwargs):
+        start = datetime.now()
+        result = func(*args, **kwargs)
+        stop = datetime.now()
+        print(stop - start)
+        return result
+    return inner_function  
+
+
+def parse_genotype(genotype):
+    '''Parses genotypes to obtain alleles
+    
+    Parameters:
+        genotype (str): genotype, example: 'Aabb'
+    
+    Returns: list of alleles
+    '''
+    
+    
+    return [genotype[i:i+2] for i in range(0, len(genotype), 2)]
+
+
+def calc_gamets(*args):
+    '''Creates sets with all possible gamets for genotype
+    
+    Parameters:
+        *args (alleles returned by parse_genotype())
+    Returns: generator with all possible gamets for genotype
+    '''
+    
+    
+    pools = [tuple(pool) for pool in args]
+    result = [[]]
+    for pool in pools:
+        result = [x+[y] for x in result for y in pool]
+    for prod in result:
+        yield tuple(prod)
+        
+
+@lru_cache(maxsize=None)
+def do_genotype(*gamets):
+    '''Makes genotype from gamets
+    
+    Parameters:
+        gamets (tuples): two sets of gamets
+    Returns: 
+        genotype (str): resulted genotype
+    '''
+    
+    
+    genotype = ''.join([''.join(sorted(gene)) for gene in zip(*gamets)])
+    return genotype
+
+        
+def calc_genotypes(gamets1, gamets2, k=1):
+    '''Creates all possible genotypes from two sets of gamets
+    
+    Parameters:
+        gamets1 (tuple): set of gamets for the first genotype
+        gamets2 (tuple): set of gamets for the second genotype
+        k (int): number of genes devided by two
+    
+    Returns: generator with possible genotypes
+    '''
+    
+    
+    for gamet1 in gamets1:
+        for gamet2 in gamets2:
+            geno_l = do_genotype(gamet1[:k], gamet2[:k])
+            geno_r = do_genotype(gamet1[k:], gamet2[k:])
+            yield geno_l + geno_r   
+
+            
+def all_genotypes(p1, p2):
+    '''Creates all possible offspring genotypes for given parental genotypes
+    
+    Parameters:
+        p1 (str): parent1 genotype
+        p2 (str): parent2 genotype
+        
+    Returns: None
+    '''
+    
+    
+    gamets1 = tuple(calc_gamets(*parse_genotype(p1)))
+    gamets2 = tuple(calc_gamets(*parse_genotype(p2)))
+    [print(genotype) for genotype in calc_genotypes(gamets1, gamets2)]
+    
+
+@calc_runtime
+def genotype_prob(p1, p2, target):
+    '''Calculates the probability of a certain genotype (its expected share in the offspring)
+    
+    Parameters:
+        p1 (str): parent1 genotype
+        p2 (str): parent2 genotype
+        target (str): target offspring genotype for its probability calculation
+        
+    Returns: float (probability)
+    '''
+    
+    
+    gamets1 = tuple(calc_gamets(*parse_genotype(p1)))
+    gamets2 = tuple(calc_gamets(*parse_genotype(p2)))
+    
+    total_count = target_count = 0
+    k = len(p1) // 4
+    genotypes = calc_genotypes(gamets1, gamets2, k)
+    for genotype in genotypes:
+        total_count += 1
+        if target == genotype:
+            target_count +=1
+    return target_count/total_count
+
+
+# example for Subtask1
+parent1 = 'Aabb'
+parent2 = 'Aabb'
+all_genotypes(parent1, parent2)
+
+# example for Subtask2
+parent1 = 'Aabb'
+parent2 = 'Aabb'
+target = 'Aabb'
+genotype_prob(parent1, parent2, target)
+
+# Ваш код здесь (3 подзадание)
+@calc_runtime
+def unique_with(p1, p2, target):
+    '''Finds all unique genotypes with certain alleles combination
+    
+    Parameters:
+        p1 (str): parent1 genotype
+        p2 (str): parent2 genotype
+        target (str): target offspring genotype
+        
+    Returns: None
+    '''
+    
+    
+    gamets1 = tuple(calc_gamets(*parse_genotype(p1)))
+    gamets2 = tuple(calc_gamets(*parse_genotype(p2)))
+    
+    unique = []
+    for genotype in calc_genotypes(gamets1, gamets2):
+        if (genotype.find(target) != -1) and (genotype not in unique):
+            unique += [genotype]
+            print(genotype)
+            
+            
+# example for Subtask3
+parent1 = 'АаБбввГгДдЕеЖжЗзИиЙйккЛлМмНн'
+parent2 = 'АаббВвГгДДЕеЖжЗзИиЙйКкЛлМмНН'
+target = 'АаБбВвГгДдЕеЖжЗзИиЙйКкЛл'
+unique_with(parent1, parent2, target)
+
+# Ваш код здесь (4 подзадание)
+# example for Subtask4
+parent1 = 'АаБбВвГгДдЕеЖжЗзИиЙйКкЛлМмНн'
+parent2 = 'АаБбВвГгДдЕеЖжЗзИиЙйКкЛлМмНн'
+target = 'АаБбввГгДдЕеЖжЗзИиЙйккЛлМмНн'
+genotype_prob(parent1, parent2, target)
