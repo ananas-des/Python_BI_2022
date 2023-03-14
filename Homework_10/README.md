@@ -1,4 +1,4 @@
-# Decorators and Iterators
+# Decorators and Iterators :performing_arts: :loop:
 
 # Homework10
 
