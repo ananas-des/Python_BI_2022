@@ -10,16 +10,17 @@ This code was tested on **Ubuntu 22.04.1 LTS** with **Python version 3.9.13**.
 *Note: for this Homework built-in Python packages and `bs4`, `python-dotenv`, `matplotlib`, and `seaborn`modules were used.*
 
 ### Files
-In this directory there are *four files*: [README.md](./README.md), [hw11_internet.ipynb](./hw11_internet.ipynb), [hw11_internet.py](./hw11_internet.py), and [requirements.txt](./requirements.txt).
+In this directory there are *four files*: [README.md](./README.md), [hw11_internet.ipynb](./hw11_internet.ipynb), [hw11_internet.py](./hw11_internet.py), [genscan_api.zip](./genscan_api.zip) and [requirements.txt](./requirements.txt).
 
 - **README.md**: discriptions for files in this directory 
 - **requirements.txt**: .txt file with environment dependencies
 - **hw11_internet.ipynb**: jupyter notebook with Tasks solutions
 - **hw11_internet.py**: .py file with only code from jupyter notebook
+- **genscan_api.zip**: archive with files for GENSCAN Python API
 
 ### Folders
 
-In [genscan_api](./genscan_api) folder there are [genscan_api.py](./genscan_api/genscan_api.py) .py script with *Python API* for [GENSCAN](http://hollywood.mit.edu/GENSCAN.html) web tool, [example_sequence.txt](./genscan/example_sequence.txt) with example gene sequence input, [requirements.txt](./genscan_api/requirements.txt) with its environment dependencies.
+In [genscan_api](./genscan_api) folder there are [genscan_api.py](./genscan_api/genscan_api.py) .py script with *Python API* for [GENSCAN](http://hollywood.mit.edu/GENSCAN.html) web tool, [example_sequence.txt](./genscan_api/example_sequence.txt) with example gene sequence input, [requirements.txt](./genscan_api/requirements.txt) with its environment dependencies.
 
 ## Task1. Top 250 IMDb film list
 
