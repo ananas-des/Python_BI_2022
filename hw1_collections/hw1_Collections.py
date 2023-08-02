@@ -1,10 +1,16 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[249]:
+#!/usr/bin/env python3
 
 
-def sequence_check (nucleic_acid):
+Complement_DNA_dictionary = {'A': 'T', 'a': 't', 'T': 'A', 't': 'a',
+                             'G': 'C', 'g': 'c', 'C': 'G', 'c': 'g'} #Dictionary for DNA complement()
+Complement_RNA_dictionary = {'A': 'U', 'a': 'u', 'U': 'A', 'u': 'a',
+                             'G': 'C', 'g': 'c', 'C': 'G', 'c': 'g'} #Dictionary for RNA complement()
+Transcription_dictionary = {'A': 'A', 'a': 'a', 'T': 'U', 't': 'u',  
+                           'G': 'G', 'g': 'g', 'C': 'C', 'c': 'c'} #Dictionary for transcription()
+Commands = ['complement', 'transcribe', 'reverse', 'reverse_complement']
+  
+    
+def sequence_check(nucleic_acid):
     '''This function tests whether sequence from input is DNA, RNA or not a nucleic acid
     
     Parameters:
@@ -20,12 +26,12 @@ def sequence_check (nucleic_acid):
     sequence_is_RNA = True
         
     for nucl in nucleic_acid:
-        if nucl not in complement_DNA_dictionary.keys(): #Keys in this dictionary DNA nucleotides
+        if nucl not in Complement_DNA_dictionary.keys(): #Keys in this dictionary are DNA nucleotides
             sequence_is_DNA = False
-        if i not in transcription_dictionary.values(): #Values in this dictionary RNA nucleotides
+        if nucl not in Transcription_dictionary.values(): #Values in this dictionary are RNA nucleotides
             sequence_is_RNA = False
         
-    if (len(nucleic_acid) == 0) | (sequence_is_DNA | sequence_is_RNA == False): 
+    if (len(nucleic_acid) == 0) or ((sequence_is_DNA == False) and (sequence_is_RNA == False)): 
     #Here sequence type would be checked and returned
         return "Not nucleic acid"
     elif sequence_is_DNA == True:
@@ -45,15 +51,15 @@ def complement(nucleic_acid, sequence_type):
     complement_nucleic_acid (str): complemented DNA or RNA sequence
     '''
     
-    complement_nucleic_acid = "" #Empty str is initiated   
+    complement_nucleic_acid = [] #Empty list is initiated   
     if sequence_type == "DNA":
-        for i in nucleic_acid:
-            complement_nucleic_acid += complement_DNA_dictionary[i] #complement_DNA_dictionary contains DNA nucleotides
-        return complement_nucleic_acid
+        for nucl in nucleic_acid:
+            complement_nucleic_acid += Complement_DNA_dictionary[nucl] #complement_DNA_dictionary contains DNA nucleotides
+        return ''.join(complement_nucleic_acid)
     if sequence_type == "RNA":
-        for i in nucleic_acid:
-            complement_nucleic_acid += complement_RNA_dictionary[i] #complement_RNA_dictionary contains RNA nucleotides
-        return complement_nucleic_acid
+        for nucl in nucleic_acid:
+            complement_nucleic_acid += Complement_RNA_dictionary[nucl] #complement_RNA_dictionary contains RNA nucleotides
+        return ''.join(complement_nucleic_acid)
 
     
 def reverse_complement(nucleic_acid, sequence_type):
@@ -83,10 +89,10 @@ def transcription(nucleic_acid):
     transcript (str): transcribed input sequence (RNA from DNA template)
     '''
 
-    transcript = "" #Empty str is initiated
-    for i in nucleic_acid:
-        transcript += transcription_dictionary[i] #keys are DNA nucleotides, and values are RNA nucleotides
-    return transcript
+    transcript = [] #Empty str is initiated
+    for nucl in nucleic_acid:
+        transcript += Transcription_dictionary[nucl] #keys are DNA nucleotides, and values are RNA nucleotides
+    return ''.join(transcript)
 
 
 def reverse(nucleic_acid):
@@ -101,19 +107,19 @@ def reverse(nucleic_acid):
     reversed_nucleic_acid = ''.join(nucleic_acid[::-1]) #Reverses nucleic_acid and changes type to str()
     return reversed_nucleic_acid
 
-complement_DNA_dictionary = {'A': 'T', 'a': 't', 'T': 'A', 't': 'a',
-                            'G': 'C', 'g': 'c', 'C': 'G', 'c': 'g'} #Dictionary for DNA complement()
-complement_RNA_dictionary = {'A': 'U', 'a': 'u', 'U': 'A', 'u': 'a', 
-                            'G': 'C', 'g': 'c', 'C': 'G', 'c': 'g'} #Dictionary for RNA complement()
-transcription_dictionary = {'A': 'A', 'a': 'a', 'T': 'U', 't': 'u',  
-                           'G': 'G', 'g': 'g', 'C': 'C', 'c': 'c'} #Dictionary for transcription()
 
 while True: 
     #Face-control for command input
     command = input("Enter command: ")
-    if (command == "exit") | (len(command) == 0): #If for command input is "exit" or nothing, program will interupt
-        print("See you soon:)")
-        break
+    if command not in Commands:
+        if (command == "exit") or (len(command) == 0): #If for command input is "exit" or nothing, program will interupt
+            print("See you soon:)")
+            break
+        else:
+            print("""Wrong command! Please select one from this list:
+            'complement'  'transcribe'  'reverse'  'reverse_complement' 'exit'""")
+            continue
+            
     #Face-control for nucleic_acid input    
     while True:
         nucleic_acid = list(input("Enter sequence: "))            
@@ -127,7 +133,7 @@ while True:
     if command == 'complement':
         result = complement(nucleic_acid,sequence_type)
         print(f'Your complemented {sequence_type} sequence: {result}')
-    elif (command == 'transcribe') & (sequence_type == 'DNA'):
+    elif (command == 'transcribe') and (sequence_type == 'DNA'):
         result = transcription(nucleic_acid)
         print(f'Your transcribed DNA sequence: {result}')
     elif command == 'reverse':
@@ -138,4 +144,3 @@ while True:
         print(f'Your reversed complement {sequence_type} sequence: {result}')
     else:
         print(f'Wrong command: {command} for {sequence_type}') #In case of undefined commands or wrong types
-
