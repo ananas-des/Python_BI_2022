@@ -19,8 +19,8 @@ def sequence_check (nucleic_acid):
     sequence_is_DNA = True
     sequence_is_RNA = True
         
-    for i in nucleic_acid:
-        if i not in complement_DNA_dictionary.keys(): #Keys in this dictionary DNA nucleotides
+    for nucl in nucleic_acid:
+        if nucl not in complement_DNA_dictionary.keys(): #Keys in this dictionary DNA nucleotides
             sequence_is_DNA = False
         if i not in transcription_dictionary.values(): #Values in this dictionary RNA nucleotides
             sequence_is_RNA = False
