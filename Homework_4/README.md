@@ -61,6 +61,6 @@ Launch **numpy_challenge.py** as the main program:
 
 OR
 
-Import **numpy_challenge.py** as the module in other .py programs:
+- import **numpy_challenge.py** as the module in other .py programs:
 
 `import numpy_challenge as {name}`
