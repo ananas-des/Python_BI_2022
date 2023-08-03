@@ -21,7 +21,7 @@ def read_gff(gff_file):
     Returns: pandas.DataFrame 
     '''
     
-    df_gff = pd.read_table(gff_file, sep='\t', skiprows=1, names=['chromosome', 'source', 'type', 'start', 
+    df_gff = pd.read_table(gff_file, sep='\t', comment="#", names=['chromosome', 'source', 'type', 'start', 
                                                                   'end', 'score', 'strand', 'phase', 'rRNA_type'])
     df_gff["rRNA_type"] = df_gff["rRNA_type"].str.extract('(\d{1,2}S)') # extracting type of rRNA from string
     return df_gff
