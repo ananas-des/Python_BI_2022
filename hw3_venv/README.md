@@ -85,7 +85,7 @@ Bash script **pandas_fix.sh** is used to comment lines where index type is check
 
 - download the [pandas_fix.sh](pandas_fix.sh)
 
-`wget https://github.com/AnasZol/Python_BI_2022/raw/Homework_3/Homework_3/pandas_fix.sh`
+`wget https://github.com/AnasZol/Python_BI_2022/raw/master/hw3_venv/pandas_fix.sh`
 - install the specified packages using the configuration file [requirements.txt](./requirements.txt)
 
 `python -m pip install -r requirements.txt`
