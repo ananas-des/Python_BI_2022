@@ -3,6 +3,7 @@
 
 import os # for using os.path.isfile() and os.remove() functions
 
+
 def main(input_fastq, output_file_prefix, save_filtered = False, 
          gc_bounds = (0,100), length_bounds = (0, 2**32), quality_threshold = 0):
     '''Function main() deals with .fastq files. It opens .fastq, can calculates Q-score, GC-content, and length 
