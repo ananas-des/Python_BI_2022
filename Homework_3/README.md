@@ -22,10 +22,10 @@ Here guidelines for **Python version 3.11.0a7** installation on **Ubuntu 22.04.1
 based on [recommendations](https://www.linuxcapable.com/how-to-install-python-3-11-on-ubuntu-22-04-lts/#Install_Python_311_-_PPA_Method).
 - create your Python project working directory
 
-`mkdir /home/ultraviolent_project/` *(as an example)*
+`mkdir ultraviolent_project/` *(as an example)*
 - navigate to your working directory
 
-`cd /home/ultraviolent_project/`
+`cd ultraviolent_project/`
 - use the `wget` command to download the [Python 3.11 archive](https://www.python.org/ftp/python/3.11.0/Python-3.11.0a7.tar.xz)
 
 `wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0a7.tar.xz`
@@ -49,8 +49,10 @@ based on [recommendations](https://www.linuxcapable.com/how-to-install-python-3-
 `make -j {number of cpu}`
 - once you have finished building, install Python binaries
 
-`sudo make altinstall`\
+`sudo make altinstall`
+
 *Note, it is advised to use the `make altinstall` command NOT to overwrite the default Python 3 binary system.*
+
 - after the installation, you need to configure the dynamic linker run-time bindings with the `ldconfig` command
 
 `sudo ldconfig /opt/Python-3.11.0a7`
@@ -62,13 +64,14 @@ based on [recommendations](https://www.linuxcapable.com/how-to-install-python-3-
 After **Python 3.11** installation, create **virtual environment**, which independent of the system installed Python and its modules.
 - navigate to your working directory
 
-`cd /home/ultraviolent_project/`
+`cd ultraviolent_project/`
 - create *Python 3.11* **ultraviolent** virtual environment using `venv` command
 
 `python3.11 -m venv ultraviolent`
 - activate **ultraviolent** venv using `source` command
 
 `source ultraviolent/bin/activate`
+
 - check python version in **ultraviolent**
 
 `python --version` (*output should be: Python 3.11.0a7*)
@@ -77,7 +80,12 @@ After **Python 3.11** installation, create **virtual environment**, which indepe
 Now you need to install specified packages listed in **requirements.txt**. 
 In **ultraviolence.py**, lane 37 type `set` was used to index pandas `DataFrame`, which caused syntax error. 
 So, to tackle this you need to modify *frame.py* for *pandas package* located in `./ultraviolent/lib/python3.11/site-packages/pandas/core/frame.py`. 
-Bash script **pandas_fix.sh** is used to comment lines where index type is checked.  
+
+Bash script **pandas_fix.sh** is used to comment lines where index type is checked.
+
+- download the [pandas_fix.sh](pandas_fix.sh)
+
+`wget https://github.com/AnasZol/Python_BI_2022/raw/Homework_3/Homework_3/pandas_fix.sh`
 - install the specified packages using the configuration file [requirements.txt](./requirements.txt)
 
 `python -m pip install -r requirements.txt`
