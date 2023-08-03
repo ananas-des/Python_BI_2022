@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[15]:
+#!/usr/bin/env python3
 
 
 import os # for using os.path.isfile() and os.remove() functions
@@ -168,4 +165,3 @@ def output_generator(seq_read, q_test, gc_test, length_test,
         with open(output_file_prefix+'_passed.fastq', 'a') as passed_reads:
                 for read_str in seq_read:
                     passed_reads.write(read_str+'\n')
-
