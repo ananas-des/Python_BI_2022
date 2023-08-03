@@ -1,21 +1,46 @@
 # Repository for Python Homeworks in IB
 
+## Homework6
+
+Here some solutions for Python **regular expressions** Tasks using `re` module. 
+
+### Task1. FTP links parsing
+
+- create *ftps* file with all **ftp links** from **references** file
+
+### Tasks2-5. Regular expressions for 2430 A.D. short story by Isaac Asimov
+
+- search all numbers in story;
+- search all words with 'A' or 'a' letters;
+- parse all exclamation sentences;
+- plot the distribution of the unique words lengths;
+
+### Task6. From Russian to Brickish
+
+- create translator from Russian to "brick language"
+
+### Task7. Sentences with a given number of words
+
+- make function to find n-words sentences and return a list of tuples with words from the resulted sentences
+
+All data files are in `./Homework_6/data` folder.
+
 ## Homework5
 
 Here some solutions for Python `pandas` and plot customization Tasks using `matplotlib` and `seaborn`. 
 
-## Task1. Real Data
+### Task1. Real Data
 
 - create functions for reading **.gff** and **.bed** files and converting them into `pandas.DataFrame`;
 - make **rRNA_barplot** with rRNA type counts foe each reference genome based on **rrna_annotation.gff** data;
 - reconstruct `bedtools intersect` using `pandas`
 
-## Task2. Plot customization
+### Task2. Plot customization
 
 - read **diffexpr_data.tsv.gz** file;
 - create and customize **volcano plot** based on differential expression data from given file
 
-## Task3. Pie Chart
+### Task3. Pie Chart
 
 - create and customize **bar of pie chart** where the first slice of the pie is "exploded" into a bar chart with a further breakdown of said slice's characteristics on **Top_100_Languages.csv** (arbitrary data)
 
