@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
 
 
 import os
@@ -12,23 +9,23 @@ import matplotlib.pyplot as plt
 # Task1
 
 # removing output file 'ftps' if it is pre-existed
-if os.path.isfile('ftps'):
-        os.remove('ftps')
+if os.path.isfile('data/ftps'):
+        os.remove('data/ftps')
 # parsing file 'references' for ftp links
 pattern = re.compile(r'[;\s](ftp[^;\s]+)')
-with open('references', 'r') as ref:
+with open('data/references', 'r') as ref:
         next(ref) # for first line skipping
         while True:  
             line  = ref.readline()
             for i in re.findall(pattern, line): # to find all ftp links in line
-                with open('ftps', 'a') as ftps_file: 
+                with open('daat/ftps', 'a') as ftps_file: 
                     ftps_file.write(f'{i}\n') # writing ftp links in ftps file
             if line == '':
                 break
                 
 # Task2
 
-with open('2430AD', 'r') as file:
+with open('data/2430AD', 'r') as file:
     pattern = re.compile(r'\b\d+\.?\d*\b')
     text  = file.read()
     numbers = re.findall(pattern, text)
@@ -99,4 +96,3 @@ def n_words_sentences(text, n):
     pattern = re.compile(r'(\b[A-ZА-Я]\w*\b)[,:;]?' + r'\s(\w+\b)[,:;]?'*(n-1) + r'(?:[\.!\?]|$)')
     n_words = re.findall(pattern, text)
     return n_words
-
