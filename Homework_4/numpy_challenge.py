@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-# coding: utf-8
-
-# In[84]:
 
 
 import numpy as np
@@ -33,7 +30,7 @@ def multiplication_check(matrix_list):
     for index in range(len(matrix_list) - 1):
         if matrix_list[index].shape[1] != matrix_list[index+1].shape[0]:
             return False
-        return True
+    return True
 
 
 def multiply_matrices(matrix_list):
@@ -51,8 +48,8 @@ def multiply_matrices(matrix_list):
     None - if matrices in given order can't be multiplied
     '''
     
-    mul_check = multiplication_check(matrix_list)
-    if mul_check == False:
+    
+    if not multiplication_check(matrix_list):
         return None
     mult_result = matrix_list[0]
     for index in range(1, len(matrix_list)):
@@ -99,7 +96,7 @@ def compute_pair_distances(matrix_2D):
     distance_matrix (numpy.ndarray) 
     '''
         
-    distance_matrix = np.linalg.norm(a[:, None] - a[None, :], axis=-1)
+    distance_matrix = np.linalg.norm(matrix_2D[:, None] - matrix_2D[None, :], axis=-1)
     return distance_matrix
 
 
