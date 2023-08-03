@@ -161,7 +161,7 @@ def output_generator(seq_read, q_test, gc_test, length_test,
     if not all(q_test, gc_test, length_test):
         # appending reads into _failed.fastq file, variable save_filtered = True
         if save_filtered:
-            with open(output_file_prefix+'_failed.fastq', 'a') as failed_reads:
+            with open(output_file_prefix + '_failed.fastq', 'a') as failed_reads:
                 for read_str in seq_read:
                     failed_reads.write(read_str+'\n')
     else:
