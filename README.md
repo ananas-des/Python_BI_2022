@@ -4,15 +4,15 @@
 
 Here some solutions for Python **Parallel Programming** Tasks using `sklearn`, `numpy`, and some built-in packages for parallel programming in Python, such as `concurrent`, `multiprocessing`, and `threading`.
 
-## Task1. Paralleling custom Random Forest
+### Task1. Paralleling custom Random Forest
 
 - parallelize `fit()`, `predict_proba()`, and `predict()` methods for custom implementation of Random Forest Classifier
 
-## Task2. Memory usage decorator
+### Task2. Memory usage decorator
 
 - decorator function `memory_usage()` to limit the memory usage of a target function
 
-## Task3. Custom Parallel mapping
+### Task3. Custom Parallel mapping
 
 - a class `ParallelMap` that parallelizes the map function using multiprocessing
 
@@ -20,27 +20,27 @@ Here some solutions for Python **Parallel Programming** Tasks using `sklearn`, `
 
 Here some solutions for Python **decorators and iterators** Tasks using `os`, `dataclasses`, and `functools` modules.
 
-## Task1. Class MyDict
+### Task1. Class MyDict
 
 - create a derivative class of a regular dictionary, with the exception of iteration giving both keys and values
 
-## Task2. Yield, or not to Yield
+### Task2. Yield, or not to Yield
 
 - create function that appends new element to the list iterator returning iterator
 
-## Task3. Classes MyString an MySet
+### Task3. Classes MyString an MySet
 
 - create decorator for class methods to return current class objects 
 
-## Task4. Form public to private, and vice versa
+### Task4. Form public to private, and vice versa
 
 - replace all public methods to private, and vice versa, using decorator `switch_privacy()`
 
-## Task5. Context manager OpenFasta
+### Task5. Context manager OpenFasta
 
 - create context manager for reading .fasta files and storing them in dataclass `FastaRecord()` format
 
-## Task6. Crossbreed them all!
+### Task6. Crossbreed them all!
 
 - get all possible (non-unique) genotypes when crossbreeding two organisms and calculate the probability of a certain genotype (its expected share in the offspring)
 
