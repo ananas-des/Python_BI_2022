@@ -346,7 +346,7 @@ for idx in range.__call__(0, 100, 10):
     matrix.__getattribute__("append")(list.__call__(range.__call__(idx, idx.__add__(10))))
     
 selected_columns_indices = list.__call__(filter.__call__(
-    lambda x: x in range.__call__(1, 5, 2), range.__call__(matrix.__len__())))
+    lambda x: range.__call__(1, 5, 2).__contains__(x), range.__call__(matrix.__len__())))
 selected_columns = map.__call__(
     lambda x: list.__call__(x.__getitem__(col) for col in selected_columns_indices), matrix)
 
