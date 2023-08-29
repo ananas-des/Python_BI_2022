@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-# coding: utf-8
-
-# In[27]:
 
 
 import sys
@@ -84,8 +81,8 @@ def func_chain(*functions):
     
     def combined_function(value):  # Use nested function in order to assign without execution.
         for function in functions:
-            func_result = function(value)
-        return func_result
+            value = function(value)
+        return value
     return combined_function
 
 
@@ -119,11 +116,10 @@ def nothing_to_print(*args, sep=' ', end= '\n', file=sys.stdout):
     *args: unlimited number of objects to print
     sep (str): objects separator
     end (str): line end
+    file: the way the result is displayed
     
-    Returns:
-    stdout (str): printed line
+    Returns: None
     '''
     
     output = sep.join(map(str, args)) + end
     file.write(output)
-
