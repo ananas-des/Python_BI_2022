@@ -112,7 +112,7 @@ def multiple_partial(*functions, **kwargs):
     return part_func
 
 
-def nothing_to_print(*args, sep=' ', end= '\n'):
+def nothing_to_print(*args, sep=' ', end= '\n', file=sys.stdout):
     '''Function nothing_to_print() is full analogous of python print() function created using python sys package
     
     Parameters:
@@ -124,9 +124,6 @@ def nothing_to_print(*args, sep=' ', end= '\n'):
     stdout (str): printed line
     '''
     
-    sys.stdout.write(str(args[0]))
-    if len(args) > 1:
-        for i in args[1:]:
-            sys.stdout.write(f'{sep}{str(i)}')
-    sys.stdout.write(end)
+    output = sep.join(map(str, args)) + end
+    file.write(output)
 
