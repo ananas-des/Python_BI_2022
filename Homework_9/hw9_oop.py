@@ -65,7 +65,8 @@ class Chat:
             print("--------------------")
             
             
-    def str_to_date(self, strdate):
+    @staticmethod
+    def __str_to_date(strdate):
         '''Transforms date from string format to datetime format using datetime module
         Example: '2023/02/21' -> datetime.datetime(2023, 2, 21, 0, 0)
         Note: this fuction is for module script, but you may use it in your purpose
