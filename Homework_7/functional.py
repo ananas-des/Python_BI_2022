@@ -44,8 +44,8 @@ def consensus_filter(*args):
     
     *functions, conteiner = args
     for func in functions:
-        conteiner = list(filter(func, conteiner))
-    return conteiner
+        conteiner = filter(func, conteiner)
+    return list(conteiner)
 
 
 def conditional_reduce(boolean_function, appl_function, conteiner):
