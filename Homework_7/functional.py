@@ -63,8 +63,7 @@ def conditional_reduce(boolean_function, appl_function, conteiner):
     
     conteiner = list(filter(boolean_function, conteiner))
     element1 = conteiner[0]
-    for index in range(1, len(conteiner)):
-        element2 = conteiner[index]
+    for element2 in conteiner[1:]:
         element1 = appl_function(element1, element2)
     return element1
 
