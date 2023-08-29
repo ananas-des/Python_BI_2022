@@ -184,7 +184,7 @@ class Message:
         chat.recieve(self)
         
         
-class User():
+class User:
     '''A class to represent a user
     
     Attributes:
