@@ -1,3 +1,5 @@
+# Repository for Python Homeworks in IB
+
 # Repository for Python Course Homeworks in Bioinformatics Institute
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
@@ -20,6 +22,13 @@ Here are brief descriptions of the tasks that we performed to master the topics.
 ## Homework10. [Decorators and iterators](hw10_iter_decor) :performing_arts: :loop:
 
 [Here](hw10_iter_decor) some solutions for Python **decorators and iterators** Tasks using `os`, `dataclasses`, and `functools` modules. During the tasks, we create *a derivative class of a regular dictionary*, with the exception of iteration giving both keys and values, function that appends new element to the list iterator returning iterator, decorator for class methods to return current class objects, context manager for reading `.fasta` files and storing them in dataclass `FastaRecord()` format, replaced all public methods to private, and *vice versa*, using decorator `switch_privacy()`, and wrote a script for finding all possible (non-unique) genotypes when crossbreeding two organisms and calculated the probability of a certain genotype (its expected share in the offspring.
+
+## Homework9. [Object oriented programming](hw9_oop) :snake:
+
+[Here](hw9_oop) some solutions for Python **object oriented programming (OOP)** Tasks using `datetime`, `abc`, and `numpy` modules. For these tasks, 
+we created classes `Chat`, `Message`, and `User` for sending messages to chat and retrieving their information, class `Args` to call function via specific syntax,
+subclass `StrangeFloat` derived from `float`, and some classes for dealing with Biological Sequences. Also, in some function we replaced as much as possible Python basic syntax on 
+synonymous dunder methods, attributes, and variables, just for fun:)
 
 ## Homework7. [Functional programming](hw7_func_programming) 🔀
 
