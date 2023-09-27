@@ -24,5 +24,6 @@ if __name__ == '__main__':
     parser.add_argument('file_path', help="file(s)/directory(ies) path for moving", nargs='+', default=sys.stdin)
     parser.add_argument('move_to_path', help="destination for file(s)/directory(ies)", type=str, default=sys.stdin)
     args = parser.parse_args()
+    
     mv(args.file_path, args.move_to_path)
 
