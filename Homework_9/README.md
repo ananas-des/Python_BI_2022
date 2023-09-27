@@ -1,5 +1,4 @@
-# Object-oriented programming (OOP) :twisted_rightwards_arrows:
-
+# Object-oriented programming (OOP) :snake:
 # Homework9
 
 Here some solutions for Python **object oriented programming (OOP)** Tasks using `datetime`, `abc`, and `numpy` modules.
