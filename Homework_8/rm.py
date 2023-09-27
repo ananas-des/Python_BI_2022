@@ -13,18 +13,21 @@ def rm(path_to_file, r_flag):
     
     Parameters:
     path_to_file (str): path to file or directory to be removed
+    r_flag (str): optional, flag for removing directories and their contents recursively
     
     Returns: None
     '''
+    
     
     if os.path.isfile(path_to_file):
         os.remove(path_to_file)
     elif os.path.isdir(path_to_file):
         if not r_flag:
-            shutil.rmtree(path_to_file)
+            sys.tracebacklimit = 0
+            raise Exception(f"Can't remove {path_to_file}, it is a folder. Use -r flag!")
         else:
-            os.rmdir(path_to_file)
-
+            shutil.rmtree(path_to_file) 
+            
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Parser for rm function')
@@ -33,10 +36,10 @@ if __name__ == '__main__':
         )
     parser.add_argument(
         '-r', '-R', '--recursive',
-        action='store_false',
+        action='store_true',
         help='Flag for removing directories and their contents recursively'
     )
     args = parser.parse_args() 
+    
     for path in args.file_path:
-        rm(path, args.recursive)          
-
+        rm(path, args.recursive)
