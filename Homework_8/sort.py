@@ -23,24 +23,14 @@ def sort(words):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Parser for sort function')
-    words_set = set() # for keeping only unique words from file(s)
-    if sys.stdin.isatty():
-        parser.add_argument(
-            'file_path', nargs='+', default=sys.stdin, help='Input path to file(s)'
-        )
-        args = parser.parse_args()
-        
-        for path in args.file_path:
-            with open(path, 'r') as file:
-                text = set(file.read().strip().split('\n')) # reading file and putting its words in set
-            words_set.update(text)
-        sort(words_set)
-    else: # for pipe
-        parser.add_argument(
-            '--file_path', type=str, default=sys.stdin, help='str from pipe'
-        )
-        args = parser.parse_args()
-        text = set(args.file_path.read().strip().split('\n'))
-        words_set.update(text)
-        sort(words_set)        
+    words_list = list() # for keeping words from file(s)
+    parser.add_argument(
+        'file_path', nargs='*', default=sys.stdin, help='Input path to file(s)'
+    )
+    args = parser.parse_args()
 
+    for path in args.file_path:
+        with open(path, 'r') as file:
+            text = list(file.read().strip().split('\n')) # reading file and putting its words in list
+        words_list += text    
+    sort(words_list)
