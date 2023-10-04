@@ -78,7 +78,7 @@ $ conda activate {env name}`
 
 2. Launch scripts
 
-- download [copycat_scripts.zip](./copycat_scripts.zip) with *seven .py scripts* using browser via [link](https://github.com/AnasZol/Python_BI_2022/raw/Homework_8/Homework_8/copycat_scripts.zip)
+- download [copycat_scripts.zip](./copycat_scripts.zip) with *seven .py scripts* using browser via [link](https://github.com/ananas-des/Python_BI_2022/raw/Homework_8/Homework_8/copycat_scripts.zip)
 
 OR
 
