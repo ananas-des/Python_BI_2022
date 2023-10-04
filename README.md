@@ -1,5 +1,3 @@
-# Repository for Python Homeworks in IB
-
 # Repository for Python Course Homeworks in Bioinformatics Institute
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
@@ -29,6 +27,10 @@ Here are brief descriptions of the tasks that we performed to master the topics.
 we created classes `Chat`, `Message`, and `User` for sending messages to chat and retrieving their information, class `Args` to call function via specific syntax,
 subclass `StrangeFloat` derived from `float`, and some classes for dealing with Biological Sequences. Also, in some function we replaced as much as possible Python basic syntax on 
 synonymous dunder methods, attributes, and variables, just for fun:)
+
+## Homework8. [UNIX command copycats](hw8_copycats) 🚂
+These scripts are equivalents of the eponymous *bash* commands that also could be combined into pipeline. They were written using standard python modules, such as `os`, `sys`, `argparse` and `shutil`.
+[Here](hw8_copycats) some **guidlines** for how to *use them* and how do *they work*.
 
 ## Homework7. [Functional programming](hw7_func_programming) 🔀
 
