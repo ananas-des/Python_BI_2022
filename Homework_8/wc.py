@@ -10,13 +10,13 @@ def wc_l(file):
     Attention! This function counts number of '\n' in file as bash wc, so misses the last line if ends without \n
     
     Parameters:
-    file (str): path to file
+    file (list): list with file content
     
     Returns:
     n_lines (int): number of lines
     '''
     
-    n_lines = file.count('\n') # similar to bash wc, misses the last line if ends without \n
+    n_lines = len(file)
     return n_lines
 
 
@@ -24,33 +24,28 @@ def wc_w(file):
     '''Function wc_w() counts number of words in file
     
     Parameters:
-    file (str): path to file
+    file (list): list with file content
     
     Returns:
     n_words (int): number of words
     '''
     
-    words = file.split()
-    n_words = len(words)
-    return n_words
+    n_words = [item for sublist in file for item in sublist.split()]
+    return len(n_words)
     
 
 def wc_c(file):
     '''Function wc_c() counts number of characters in file
     
     Parameters:
-    file (str): path to file
+    file (list): list with file content
     
     Returns:
     n_bytes (int): number of characters
     '''
     
-    if sys.stdin.isatty():
-        n_bytes = len(file) + 1
-        return n_bytes
-    else:
-        n_bytes = len(file)
-        return n_bytes
+    n_bytes = len([item for sublist in file for item in sublist]) + wc_l(file)
+    return n_bytes
 
     
 def args_dict(args): # dictionary for input parameters
@@ -117,35 +112,27 @@ if __name__ == '__main__':
         action='store_false',
         help='Flag for counting characters in file(s)'
     )
-        
-    if sys.stdin.isatty(): 
-        parser.add_argument(
-            'file_path', nargs='+', type=argparse.FileType('r', encoding='UTF-8'),
-            default=sys.stdin, help='Input path to file(s)'
-        )
-        args = parser.parse_args()
-        func_dict, n_col = args_dict(args)
-        total = [0] * n_col # for final total output as in bash wc
+    parser.add_argument(
+        'file_path', nargs='*', help='Input path to file(s)'
+    )
+    args = parser.parse_args()
+    
+    func_dict, n_col = args_dict(args)
+    total = [0] * n_col # for final total output as in bash wc
+    
+    if len(args.file_path) == 0 or args.file_path[0] == "-":
+        text = [i.strip() for i in sys.stdin]
+        output = proc_txt(func_dict, text)
+        sys.stdout.write(' ' + '  '.join(map(str, output)) + '\n')
+    else:    
         for fp in args.file_path:
             output = []
-            with open(fp.name, 'r') as file:
-                text = file.read().strip()
-                
+            with open(fp, 'r', encoding='UTF-8') as file:
+                text = file.read().strip().split("\n")
             output = proc_txt(func_dict, text)
             total = [total[i] + output[i] for i in range(n_col)]
-            output.append(f'{fp.name}\n')
-            sys.stdout.write(' '.join(map(str, output)))
+            output.append(f'{fp}\n')
+            sys.stdout.write(' ' + '  '.join(map(str, output)))
         if len(args.file_path) > 1:
             total.append('total\n')
             sys.stdout.write(' '.join(map(str, total)))
-        
-    else: # pipe option
-        parser.add_argument(
-            '--file_path', type=str, default=sys.stdin, help='Input path to file(s)'
-        )
-        args = parser.parse_args()
-        func_dict, _ = args_dict(args)
-        text = args.file_path.read()
-        output = map(str, proc_txt(func_dict, text))
-        sys.stdout.write('\t' + '\t'.join(output) + '\n')
-
