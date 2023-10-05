@@ -41,22 +41,22 @@ Use [genscan_api.py](./genscan_api/genscan_api.py) as the Python module:
 - download [genscan_api.zip](./genscan_api.zip) API archive, unzip it and navigate into it:
 
 ```
-wget https://github.com/AnasZol/Python_BI_2022/blob/Homework_11/Homework_11/genscan_api.zip
-unzip genscan_api.zip
-cd genscan_api
+$ wget https://github.com/ananas-des/Python_BI_2022/blob/Homework_11/Homework_11/genscan_api.zip
+$ unzip genscan_api.zip
+$ cd genscan_api
 ```
 
 - create virtual environment
 
-`conda create --name {env name} python=3.9.13`
+`$ conda create --name {env name} python=3.9.13`
 
 - activate you virtual environment
 
-`conda activate {env name}`
+`$ conda activate {env name}`
 
 - install the specified packages using the configuration file [requirements.txt](./genscan_api/requirements.txt)
 
-`pip install -r requirements.txt`
+`$ pip install -r requirements.txt`
 
 - run your main program and import **genscan_api.py** as module. Here an example of module usage with sequence input
 
