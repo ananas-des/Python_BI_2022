@@ -96,7 +96,7 @@ def telegram_logger(chat_id):
             sys.stdout = sys.stderr = text_buffer
             
             try:
-                start = time.time()
+                start = datetime.now()
                 if func.__name__ == 'long_lasting_function':
                     longtime = 200000000
                 else:
