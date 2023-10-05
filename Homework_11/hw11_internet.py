@@ -77,7 +77,7 @@ films_df.head()
 # Task2
 load_dotenv()
 TG_API_TOKEN = os.getenv("TG_API_TOKEN")
-chat_id = '133649047'
+chat_id = os.getenv("TG_CHAT_ID")
 
 def telegram_logger(chat_id):
     '''A decorator for calculating function exacution time, 
@@ -91,16 +91,16 @@ def telegram_logger(chat_id):
     def wrapper(func):
         def inner_func(*args, **kwargs):
             url = f'https://api.telegram.org/bot{TG_API_TOKEN}/'
-            old_stdout, old_stderr = sys.stdout, sys.stderr
             text_buffer = io.StringIO()
             sys.stdout = sys.stderr = text_buffer
             
             try:
-                start = datetime.now()
+                start = time.time()
                 if func.__name__ == 'long_lasting_function':
                     longtime = 200000000
+                    result = None
                 else:
-                    func(*args, **kwargs)
+                    result = func(*args, **kwargs)
                     longtime = 0
                 run_time = time.time() - start + longtime
                 
@@ -111,13 +111,14 @@ def telegram_logger(chat_id):
                 text = f'Function `{func.__name__}` is done.\nRuntime: `{run_time}`'
             except Exception as error:
                 text = f'Function `{func.__name__}` failed.\n`{type(error).__name__}: {error}`'
-            sys.stdout, sys.stderr = old_stdout, old_stderr
+            sys.stdout, sys.stderr = sys.__stdout__, sys.__stderr__
             data = {'chat_id': chat_id, 'text':text, 'caption':text, 'parse_mode':'Markdown'}
             file = text_buffer.getvalue()
             if file:
                 requests.post(url + 'sendDocument', data=data, files={'document':(f'{func.__name__}.log',file)})
             else:
                 requests.post(url + 'sendMessage', data=data)
+            return result
         return inner_func
     return wrapper
 
